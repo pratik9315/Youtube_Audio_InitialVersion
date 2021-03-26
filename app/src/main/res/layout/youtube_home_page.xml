@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="173dp">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/black_theme"
+        >
+
+        <TextView
+            android:id="@+id/thumbNail"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:paddingTop="35dp"
+            android:text="SAMPLE TEXT"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/sampleThumbNail"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@+id/thumbNail"/>
+
+        <TextView
+            android:id="@+id/ytTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/thumbNail"
+            android:padding="10dp"
+            android:text="This is sample text which will be replaced later by video title"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
