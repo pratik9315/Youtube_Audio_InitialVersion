@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 public class YoutubeHomePage {
     private String mTitle;
-    private String mThumbNail;
     private String thumbnailURL;
+    private String channelTitle;
 
-    public YoutubeHomePage(String mTitle, String mThumbNail, String thumbnailURL) {
+    public YoutubeHomePage(String mTitle, String channelTitle, String thumbnailURL) {
         this.mTitle = mTitle;
-        this.mThumbNail = mThumbNail;
+        this.channelTitle = channelTitle;
         this.thumbnailURL = thumbnailURL;
     }
 
@@ -31,11 +31,15 @@ public class YoutubeHomePage {
         this.mTitle = mTitle;
     }
 
-    public String getmThumbNail() {
-        return mThumbNail;
+    public void setThumbnailURL(String thumbnailURL) {
+        this.thumbnailURL = thumbnailURL;
     }
 
-    public void setmThumbNail(String mThumbNail) {
-        this.mThumbNail = mThumbNail;
+    public String getChannelTitle() {
+        return channelTitle;
+    }
+
+    public void setChannelTitle(String channelTitle) {
+        this.channelTitle = channelTitle;
     }
 }

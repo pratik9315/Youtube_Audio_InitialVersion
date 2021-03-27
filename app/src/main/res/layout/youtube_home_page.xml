@@ -4,36 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="173dp">
+    android:layout_height="240dp">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="240dp"
         android:background="@color/black_theme"
         >
 
-        <TextView
-            android:id="@+id/thumbNail"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:paddingTop="35dp"
-            android:text="SAMPLE TEXT"
-            android:textColor="@color/white" />
+
 
         <ImageView
             android:id="@+id/sampleThumbNail"
+            android:layout_marginTop="5dp"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:layout_toRightOf="@+id/thumbNail"/>
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_launcher_foreground"
+            />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_marginTop="5dp"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@+id/sampleThumbNail"
+            android:src="@drawable/play"
+            />
+
+
 
         <TextView
             android:id="@+id/ytTitle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/thumbNail"
-            android:padding="10dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/sampleThumbNail"
+            android:layout_marginTop="5dp"
             android:text="This is sample text which will be replaced later by video title"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/channelTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/ytTitle"
+            android:text="SAMPLE TEXT"
             android:textColor="@color/white" />
 
 

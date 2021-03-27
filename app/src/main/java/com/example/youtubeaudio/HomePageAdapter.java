@@ -39,13 +39,11 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
         YoutubeHomePage youtubeHomePage = homePage.get(position);
 
         String title = youtubeHomePage.getmTitle();
-        String thumbNail = youtubeHomePage.getmThumbNail();
+        String cTitle = youtubeHomePage.getChannelTitle();
 
-
-        //Uri uri = Uri.parse("src\\main\\res\\drawable-v24\\yt.png");
         Picasso.get().load(youtubeHomePage.getThumbnailURL()).into(holder.sampleThumbNail);
-        holder.thumbNail.setText(thumbNail);
-        holder.ytTitle.setText(title);
+        holder.channleTitle.setText("Channel Name: " +cTitle);
+        holder.ytTitle.setText("Video Name: " +title);
     }
 
     @Override
@@ -56,14 +54,14 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView ytTitle;
-        TextView thumbNail;
+        TextView channleTitle;
         ImageView sampleThumbNail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ytTitle = itemView.findViewById(R.id.ytTitle);
-            thumbNail = itemView.findViewById(R.id.thumbNail);
+            channleTitle = itemView.findViewById(R.id.channelTitle);
             sampleThumbNail = itemView.findViewById(R.id.sampleThumbNail);
         }
     }

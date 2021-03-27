@@ -43,11 +43,10 @@ public class QueryUtils {
         void onResponse(ArrayList<YoutubeHomePage> youtubeHomePages);
     }
 
-    private static final String SAMPLE_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=the%20weekend&key=AIzaSyAmLCwjyAbi65JNQo8pQmg51qto1piED08";
-    private static final String SAMPLE_API1 = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=the%20spiderman&key=AIzaSyAmLCwjyAbi65JNQo8pQmg51qto1piED08";
+    private static final String SAMPLE_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=the%20reddead&key=AIzaSyAmLCwjyAbi65JNQo8pQmg51qto1piED08";
     public void getYTInfo( VolleyResponseListener volleyResponseListener) {
         //RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-        String url = SAMPLE_API1;
+        String url = SAMPLE_API;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -62,7 +61,7 @@ public class QueryUtils {
                         JSONObject firstVid = vidInfo.getJSONObject(i);
                         JSONObject firstObj = firstVid.getJSONObject("snippet");
                         String title = firstObj.getString("title");
-                        String description = firstObj.getString("description");
+                        String description = firstObj.getString("channelTitle");
                         JSONObject thumbnails = firstObj.getJSONObject("thumbnails");
                         JSONObject defaultThumbnail = thumbnails.getJSONObject("default");
                         String firstThumbnailURL = defaultThumbnail.getString("url");

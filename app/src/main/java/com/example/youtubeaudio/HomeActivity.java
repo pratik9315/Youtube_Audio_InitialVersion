@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,9 +29,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -44,27 +49,45 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().hide();
-        TextView thumbNailView = (TextView) findViewById(R.id.thumbNail);
+        TextView thumbNailView = (TextView) findViewById(R.id.channelTitle);
         TextView titleView = (TextView) findViewById(R.id.ytTitle);
+        run();
+    }
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+    private void run() {
+        final ExecutorService executorService = Executors.newSingleThreadExecutor();
         QueryUtils queryUtils = new QueryUtils(this);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
-        queryUtils.getYTInfo(new QueryUtils.VolleyResponseListener() {
+        executorService.execute(new Runnable() {
             @Override
-            public void onError(String message) {
+            public void run() {
+                queryUtils.getYTInfo(new QueryUtils.VolleyResponseListener() {
+                    @Override
+                    public void onError(String message) {
+                        Toast.makeText(HomeActivity.this, "Something wrong in background thread", Toast.LENGTH_LONG).show();
+                    }
 
-            }
-
-            @Override
-            public void onResponse(ArrayList<YoutubeHomePage> youtubeHomePages) {
-                HomePageAdapter homePageAdapter = new HomePageAdapter(HomeActivity.this, youtubeHomePages);
-                recyclerView.setAdapter(homePageAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+                    @Override
+                    public void onResponse(ArrayList<YoutubeHomePage> youtubeHomePages) {
+                        mAdapter = new HomePageAdapter(HomeActivity.this, youtubeHomePages);
+                        recyclerView.setAdapter(mAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+                    }
+                });
             }
         });
 
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+
+            }
+        });
 
     }
+
 }
 
